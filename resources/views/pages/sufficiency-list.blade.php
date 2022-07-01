@@ -77,7 +77,7 @@
                             @endforeach
                         </div>
                         @if($numRows > 0)
-                            <div class="text-center">{{$sufficiency->links()}}  &nbsp; <span style="margin-left:4%; padding-top:20px;">Total {{$numRows}}</span></div>
+                            <div class="text-center">{{$sufficiency->links('custom_pagination')}}  &nbsp; <span style="margin-left:4%; padding-top:20px;">Total {{$numRows}}</span></div>
                         @endif
 
                         @if($numRows < 1)

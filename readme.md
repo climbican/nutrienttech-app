@@ -80,3 +80,17 @@ git pull git@github.com:climbican/fitnessfeed_serv.git
 ---> password for id_rsa.pub key --->d1g3M()pSlut<---
 
 ```
+
+##.ENV.PROD JUST IN CASE BACKUP FROM SERVER ON JUNE 29, 2022    
+```text 
+APP_URL=https://app.nutrient.tech
+
+LOG_CHANNEL=stack
+
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=nutritech
+DB_USERNAME=ledge90G@lcl
+DB_PASSWORD=Pl2SBgH2WG4gwsRB
+```

@@ -64,7 +64,7 @@
                             @endforeach
                         </div>
                         @if($numRows > 0)
-                            <div class="text-center">{{$crops->links()}}</div>
+                            <div class="text-center">{{$crops->links('custom_pagination')}}</div>
                         @endif
 
                         @if($numRows < 1)
