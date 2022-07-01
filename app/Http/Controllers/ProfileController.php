@@ -61,9 +61,8 @@ class ProfileController extends Controller{
         $u['last_update'] = $current_time;
 
         User::create($u);
-       Session::flash('flash_message', 'Successfully added '.$u['name'].'!');
 
-        return redirect('admin/profile/list');
+        return redirect('admin/profile/list')->with('success',  'Successfully added '.$u['name'].'!');
     }
 
     public function update(Request $request, $id){
