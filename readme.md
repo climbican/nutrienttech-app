@@ -93,4 +93,8 @@ DB_PORT=3306
 DB_DATABASE=nutritech
 DB_USERNAME=ledge90G@lcl
 DB_PASSWORD=Pl2SBgH2WG4gwsRB
+
+PHPMyAdmim credentials
+$dbuser='phpmyadmin';
+$dbpass='d0nt@sk2ice';
 ```

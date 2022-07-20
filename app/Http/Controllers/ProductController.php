@@ -209,7 +209,7 @@ class ProductController extends Controller{
         $validated['benefits'] = preg_replace('/<!--block-->/', '',  $validated['benefits']);
         $validated['dilution'] = preg_replace('/<!--block-->/', '',  $validated['dilution']);
 
-        $product->product_group = '';
+        //$product->product_group = '';
         $product->product_name = '';
         $product->product_subname = '';
         $product->description = '';

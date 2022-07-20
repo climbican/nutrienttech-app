@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -11,14 +12,14 @@ class ProfileController extends Controller{
         $this->middleware('auth');
     }
 
-    public function index(){
+    public function index() {
         $profiles = User::orderBy('create_dte', 'desc')->paginate(10);
         $numRows = User::count();
 
         return view('pages.user-list', compact('profiles', 'numRows'));
     }
 
-    public function fetchUser($id){
+    public function fetchUser($id) {
         $profile = User::find($id);
 
         $pr = array('name'=>$profile->name, 'email'=>$profile->email, 'userType'=>$profile->user_type);
@@ -28,17 +29,17 @@ class ProfileController extends Controller{
         return json_encode($p);
     }
 
-    public function create(){
+    public function create() {
         return view('pages.user-create');
     }
 
-    public function updateForm($id){
+    public function updateForm($id) {
         $user = User::find($id);
 
         return view('pages.user-update', compact('user'));
     }
 
-    public function save(Request $request){
+    public function save(Request $request) {
 
         $u = array();
         $current_time = time();
@@ -65,8 +66,7 @@ class ProfileController extends Controller{
         return redirect('admin/profile/list')->with('success',  'Successfully added '.$u['name'].'!');
     }
 
-    public function update(Request $request, $id){
-
+    public function update(Request $request, $id) {
         $user = User::find($id);
         $this->validate($request, [
             'oldPassword'=>'required|min:6',
@@ -86,7 +86,7 @@ class ProfileController extends Controller{
         return redirect('/');
     }
 
-    public function delete($id){
+    public function delete($id): RedirectResponse {
         $user = User::find($id);
         $user->delete();
         Session::flash('flash_message', 'User '.$user->name. ' was successfully removed');
