@@ -1,5 +1,5 @@
 ledgedogAdmin
 .constant('EnvVars', {
-    //urlBase:  'https://app.nutrienttechnologies.com/'
-    urlBase: 'http://localhost/nutrienttech-app/public/'
+    urlBase:  'https://app.nutrienttechnologies.com/'
+    //urlBase: 'http://localhost/nutrienttech-app/public/'
 });
