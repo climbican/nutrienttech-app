@@ -16,10 +16,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 
-class PaginationController
-{
-    public static function paginate(Collection $results, $pageSize)
-    {
+class PaginationController {
+    public static function paginate(Collection $results, $pageSize) {
         $page = Paginator::resolveCurrentPage('page');
 
         $total = $results->count();
@@ -28,7 +26,6 @@ class PaginationController
             'path' => Paginator::resolveCurrentPath(),
             'pageName' => 'page',
         ]);
-
     }
 
     /**
@@ -41,8 +38,7 @@ class PaginationController
      * @param  array  $options
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    protected static function paginator($items, $total, $perPage, $currentPage, $options)
-    {
+    protected static function paginator($items, $total, $perPage, $currentPage, $options) {
         return Container::getInstance()->makeWith(LengthAwarePaginator::class, compact(
             'items', 'total', 'perPage', 'currentPage', 'options'
         ));

@@ -41,7 +41,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
-class DeficiencyController extends Controller{
+class DeficiencyController extends Controller {
+
 	// name of the uploaded deficiency image
 	private $image_name;
 	// Link image type to correct image loader and saver

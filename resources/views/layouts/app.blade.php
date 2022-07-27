@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nutritech Admin</title>
-
     <!-- Vendor CSS -->
     <link href="{{url('vendors/bower_components/animate.css/animate.min.css')}}" rel="stylesheet">
     <link href="{{url('vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')}}" rel="stylesheet">
@@ -25,6 +24,7 @@
 
     <link href="{{url('css/app.min.1.css')}}" rel="stylesheet" id="app-level">
     <link href="{{url('css/app.min.2.css')}}" rel="stylesheet">
+
 
     <link rel="shortcut icon" href="{{url('favicon.ico')}}">
     <link rel="apple-touch-icon" sizes="57x57" href="{{url('images/icons/apple-icon-57x57.png')}}">
