@@ -130,6 +130,7 @@ class DeficiencyApiController{
 		//bounce back info for now
 		// try {
 			$tmp = json_decode(file_get_contents('php://input'));
+        Log::info('info for deficiency :: ' . print_r($tmp, true));
 			//echo 'value of  id>>>'.$tmp->deficiencyId;
 			// CORS IS NOT PLAYING NICE SO I HAD TO USE PLAIN/TEXT ON THE REQUEST BODY
 			// THE RESULT IS THAT LARAVEL DOES NOT RECOGNIZE IT AS JSON... MAKES SENSE.
