@@ -113,7 +113,7 @@ class DeficiencyApiController{
     }
 
 	/**
-	 * @desc add new image which needs approval
+	 * @desc add new image which needs approval, THIS FUNCTION ALSO ADDS A NEW DEFICIENCY WHEN THE DATA IS PRESENT
 	 * @param Request $request JSON {imageData:base64, deficiencyId:number, ?name:string, ?descriptor:string, ?deficiencyTraits}
 	 * @return string - containing status of request
      *
@@ -126,7 +126,7 @@ class DeficiencyApiController{
     )
      */
 	public function add_new_image(Request $request) : string {
-		//Log::info('image data>>> '.print_r(file_get_contents('php://input'), true));
+		Log::info('image data>>> '.print_r(file_get_contents('php://input'), true));
 		//bounce back info for now
 		// try {
 			$tmp = json_decode(file_get_contents('php://input'));
