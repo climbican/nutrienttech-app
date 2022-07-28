@@ -134,7 +134,7 @@ class DeficiencyApiController{
 			//echo 'value of  id>>>'.$tmp->deficiencyId;
 			// CORS IS NOT PLAYING NICE SO I HAD TO USE PLAIN/TEXT ON THE REQUEST BODY
 			// THE RESULT IS THAT LARAVEL DOES NOT RECOGNIZE IT AS JSON... MAKES SENSE.
-			$id = $tmp->deficiencyId;// $request->input('deficiencyId');  // this works
+			$id = $tmp->deficiencyId ?? null;// $request->input('deficiencyId');  // this works
 			$image = $tmp->imageData; // $request->input('imageData');
             $def_id = $tmp->deficiencyId;;
             $name_short = '';
