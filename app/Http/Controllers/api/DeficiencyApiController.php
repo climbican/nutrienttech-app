@@ -128,9 +128,9 @@ class DeficiencyApiController{
 	public function add_new_image(Request $request) : string {
 
 		//bounce back info for now
-		// try {
+		try {
 			$tmp = json_decode(file_get_contents('php://input'));
-        Log::info('info for deficiency :: ' . print_r($tmp, true));
+            Log::info('info for deficiency :: ' . print_r($tmp, true));
 			//echo 'value of  id>>>'.$tmp->deficiencyId;
 			// CORS IS NOT PLAYING NICE SO I HAD TO USE PLAIN/TEXT ON THE REQUEST BODY
 			// THE RESULT IS THAT LARAVEL DOES NOT RECOGNIZE IT AS JSON... MAKES SENSE.
@@ -145,6 +145,7 @@ class DeficiencyApiController{
                 $def = Deficiency::find($id);
                 //FIRST LET'S MAKE SURE THE DATA IS VALID OR AS MUCH SO AS POSSIBLE.
                 if(!isset($def->name_short) || $def->name_short === '') {
+                    Log::warning('line 148 there was an issue  not even sure what the fart this is');
                     return json_encode(['status'=> 400, 'message'=>'There was an issue with the request']);
                 }
                 $def_id = $def->id;
@@ -205,11 +206,11 @@ class DeficiencyApiController{
 			// save the new image
 			$nis->save();
 			return json_encode(['status'=>200, 'message'=>'Deficiency image successfully added.']);
-		/**}
+		}
 		catch(\Exception $e) {
 		    Log::debug('there was an issue saving the image in the catch section');
 			return json_encode(['status'=>419, 'message'=>'There was an issue saving the image']);
-		}**/
+		}
 	}
 
 	/**
