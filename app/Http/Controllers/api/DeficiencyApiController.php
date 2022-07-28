@@ -26,8 +26,8 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Deficiency;
-use App\ImageStore;
+use App\Models\Deficiency;
+use App\Models\ImageStore;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -61,7 +61,7 @@ class DeficiencyApiController{
 
 	public function __construct() {}
 
-	public function fetch_list_from_crop_id($id) {
+	public function fetch_list_from_crop_id($id): string {
 		$query = 'SELECT i.linked_table_id, d.id AS defId, d.name_short AS nameShort, d.element_id AS elementId, i.image_name AS imageName
 					FROM  deficiency d
 					INNER JOIN image_store i
@@ -221,7 +221,7 @@ class DeficiencyApiController{
 	 *
 	 * @return bool
 	 */
-	private final function save_base64_image(string $base64_image_string, string $output_file_name_without_extension): bool{
+	private function save_base64_image(string $base64_image_string, string $output_file_name_without_extension): bool{
 		$splited = explode(',', substr( $base64_image_string , 5 ) , 2);
 		$mime=$splited[0];
 		$data=$splited[1];
