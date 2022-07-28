@@ -34,10 +34,10 @@ Route::get('user/app/deficiency/fetch/all', [DeficiencyController::class, 'fetch
 Route::get('user/app/deficiency/fetch/single/{id}', [DeficiencyController::class, 'fetchDeficiency']);
 
 Route::group(['namespace' => 'api'], function () {
-    Route::post( 'community/add/deficiency/image', array('middleware'=>'cors', 'uses'=>[DeficiencyApiController::class, 'add_new_image'] ));
-    Route::get('user/app/crop/fetch/list', array('middleware' => 'cors', 'uses' => [CropApiController::class, 'fetchAppList']));
-    Route::get('user/app/deficiency/fetch/list/{id}', array('middleware'=> 'cors', 'uses'=> [DeficiencyApiController::class, 'fetch_list_from_crop_id']));
-    Route::get('users/app/deficiency/fetch/single/{id}', array('middleware'=> 'cors', 'uses'=> [DeficiencyApiController::class, 'deficiency_detail']));
-    Route::get('users/app/deficiency/exists/{crop_id}/{element_id}', array('middleware' => 'cors', 'uses' => [DeficiencyApiController::class, 'deficiency_exists']));
+    Route::post( 'community/add/deficiency/image', [DeficiencyApiController::class, 'add_new_image'] );
+    Route::get('user/app/crop/fetch/list', [CropApiController::class, 'fetchAppList']);
+    Route::get('user/app/deficiency/fetch/list/{id}', [DeficiencyApiController::class, 'fetch_list_from_crop_id']);
+    Route::get('users/app/deficiency/fetch/single/{id}', [DeficiencyApiController::class, 'deficiency_detail']);
+    Route::get('users/app/deficiency/exists/{crop_id}/{element_id}', [DeficiencyApiController::class, 'deficiency_exists']);
 });
 
