@@ -126,14 +126,14 @@ class DeficiencyApiController{
     )
      */
 	public function add_new_image(Request $request) : string {
-		Log::info('image data>>> '.print_r(file_get_contents('php://input'), true));
-        Log::info('input data?? not sure if it works ' . print_r($request->input('deficiencyId')));
+
 		//bounce back info for now
 		// try {
 			$tmp = json_decode(file_get_contents('php://input'));
 			//echo 'value of  id>>>'.$tmp->deficiencyId;
 			// CORS IS NOT PLAYING NICE SO I HAD TO USE PLAIN/TEXT ON THE REQUEST BODY
 			// THE RESULT IS THAT LARAVEL DOES NOT RECOGNIZE IT AS JSON... MAKES SENSE.
+        Log::info('is the id there? ' . $tmp->deficiencyId);
 			$id = $tmp->deficiencyId;// $request->input('deficiencyId');  // this works
 			$image = $tmp->imageData; // $request->input('imageData');
             $def_id = $tmp->deficiencyId;;
