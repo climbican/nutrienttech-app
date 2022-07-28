@@ -128,7 +128,7 @@ class DeficiencyApiController{
 	public function add_new_image(Request $request) : string {
 
 		//bounce back info for now
-		try {
+		//try {
 			$tmp = json_decode(file_get_contents('php://input'));
             Log::info('info for deficiency :: ' . print_r($tmp, true));
 			//echo 'value of  id>>>'.$tmp->deficiencyId;
@@ -206,11 +206,11 @@ class DeficiencyApiController{
 			// save the new image
 			$nis->save();
 			return json_encode(['status'=>200, 'message'=>'Deficiency image successfully added.']);
-		}
+		/**}
 		catch(\Exception $e) {
 		    Log::debug('there was an issue saving the image in the catch section');
 			return json_encode(['status'=>419, 'message'=>'There was an issue saving the image']);
-		}
+		}**/
 	}
 
 	/**
