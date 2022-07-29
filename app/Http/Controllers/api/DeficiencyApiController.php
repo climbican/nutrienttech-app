@@ -176,7 +176,7 @@ class DeficiencyApiController{
                 $def_exists = $this->deficiency_exists($tmp->newDeficiency->cropId, $tmp->newDeficiency->elementId, 1);
 
                 Log::info('exists count :: ' . print_r($def_exists, true));
-                if($def_exists['count'] === 0){
+                if($def_exists === 0){
                     Log::debug('add new def');
                     $def = new Deficiency();
                     $def->element_id = $tmp->newDeficiency->elementId;
