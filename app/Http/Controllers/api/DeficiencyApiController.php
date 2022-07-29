@@ -130,7 +130,8 @@ class DeficiencyApiController{
 		//bounce back info for now
 		//try {
 			$tmp = json_decode(file_get_contents('php://input'));
-            Log::info('info for deficiency :: ' . print_r($tmp, true));
+
+            //Log::info('info for deficiency :: ' . print_r($tmp, true));
 			//echo 'value of  id>>>'.$tmp->deficiencyId;
 			// CORS IS NOT PLAYING NICE SO I HAD TO USE PLAIN/TEXT ON THE REQUEST BODY
 			// THE RESULT IS THAT LARAVEL DOES NOT RECOGNIZE IT AS JSON... MAKES SENSE.
@@ -139,7 +140,7 @@ class DeficiencyApiController{
             $def_id = $tmp->deficiencyId;;
             $name_short = '';
 
-			// validate that the deficiency exists
+			// validate that the deficiency exists and there is no new deficiency
             // TODO: check this section, it's not quit working
             if(count((array)$tmp->newDeficiency) < 1) {
                 $def = Deficiency::find($id);
@@ -162,12 +163,20 @@ class DeficiencyApiController{
             }
 
 			// IF THERE IS A NEW DEFICIENCY THAT NEEDS TO BE ADDED FIRST.  SO THAT LINK_TABLE_ID IS CORRECT
+            // TODO: THIS IS WHERE THINGS ARE GOING WRONG
+            // // TODO: ISSUE IS THAT DEFICIENCY ID IS COMING THROUGH EVEN WHEN IT'S A NEW DEFICIENCY
+            // // // // TODO: THIS IS AN APP SIDE ISSUE, I THINK....
             if (count((array)$tmp->newDeficiency) > 1){
+                Log::info('in the count new Deficiency section');
                 if(!isset($tmp->newDeficiency->cropId) || !isset($tmp->newDeficiency->elementId) || !isset($tmp->newDeficiency->title) || !isset($tmp->newDeficiency->description)){
+                    Log::warning('in the missing fields section');
                     return json_encode(['status'=> 419, 'message'=>'Missing fields.']);
                 }
+                // // THIS IS USED TO DETERMINE IF THE CROP ID + ELEMENT ID IS ALREADY IN USE SOMEWHERE ELSE.
                 $def_exists = $this->deficiency_exists($tmp->newDeficiency->cropId, $tmp->newDeficiency->elementId, 1);
-                if($def_exists === 0){
+
+                Log::info('exists count :: ' . print_r($def_exists, true));
+                if($def_exists['count'] === 0){
                     Log::debug('add new def');
                     $def = new Deficiency();
                     $def->element_id = $tmp->newDeficiency->elementId;
